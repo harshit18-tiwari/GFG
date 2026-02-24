@@ -1,27 +1,28 @@
 class Solution {
     public int minPlatform(int arr[], int dep[]) {
-        
+        //  code here
         int n = arr.length;
-
         Arrays.sort(arr);
         Arrays.sort(dep);
-
-        int i = 0, j = 0;
-        int plat = 0, maxPlat = 0;
-
-        while (i < n && j < n) {
-
-            if (arr[i] <= dep[j]) {
-                plat++;
-                maxPlat = Math.max(maxPlat, plat);
+        
+        int i=1;
+        int j=0;
+        
+        int count = 1;
+        int max_count = 1;
+        
+        while(i<n && j<n) {
+            if(arr[i]<=dep[j]) {
+                count++;
                 i++;
             }
             else {
-                plat--;
+                count--;
                 j++;
             }
+            max_count = Math.max(max_count,count);
         }
-
-        return maxPlat;
+        
+        return max_count;
     }
 }
